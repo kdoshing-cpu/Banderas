@@ -1,0 +1,25 @@
+{
+  "entities": {
+    "Score": {
+      "title": "User Score",
+      "description": "High scores for the flag quiz leaderboard.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "displayName": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "flagsCount": { "type": "number", "description": "Number of flags guessed correctly" },
+        "totalTime": { "type": "number", "description": "Total time taken in seconds" },
+        "timeAttackScore": { "type": "number", "description": "Max flags guessed in 5 minutes" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "displayName", "flagsCount", "totalTime", "updatedAt"]
+    }
+  },
+  "firestore": {
+    "leaderboard/{userId}": {
+      "schema": "Score",
+      "description": "Public leaderboard entries keyed by user ID."
+    }
+  }
+}
